@@ -62,7 +62,7 @@ class Main extends Controller
     public function login(Request $r){
      
       if(Cookie::has('user_id')){
-
+            
                Session::put("user_id", Cookie::get('user_id'));
                Session::put("user_email",Cookie::get('user_email'));
                return redirect('/');
@@ -115,7 +115,18 @@ class Main extends Controller
     }
     function profile(){
         $user = User::where('id',Session::get("user_id"))->first();
-      
+     
         return view('profile')->with("user",$user);
     }
+    function logOut(Request $r){
+
+        $r->session()->flush();
+        Cookie::queue(Cookie::forget('user_id'));
+        Cookie::queue(Cookie::forget('user_email'));
+        
+       
+        return redirect('/');
+    }
+
+
 }

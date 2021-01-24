@@ -1,7 +1,7 @@
-@extends('layouts.app')
+@extends('layouts.account')
 
-@section('title', 'Profile')
+@section('title', 'My Profile')
 
-@section('content')
-    <p>PROFILE</p>
+@section('my_content')
+    <p>My Profile.</p>
 @endsection

@@ -4,6 +4,7 @@
    <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  <link href="{{ asset('/css/profile.css') }}" rel="stylesheet" > 
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
   </head>
@@ -52,7 +53,41 @@
 
 
     <div class="container">
-      @yield('content')
+      <div id="wrapper">
+
+        <!-- Sidebar -->
+        <div id="sidebar-wrapper">
+            <ul class="sidebar-nav">
+                <li class="sidebar-brand">
+                    <a href="#">
+                        My Account
+                    </a>
+                </li>
+                <li>
+                    <a href="{{'myproducts'}}">My Products</a>
+                </li>
+                <li>
+                    <a href="{{'addproduct'}}">Add Product</a>
+                </li>
+                
+            </ul>
+        </div>
+        <!-- /#sidebar-wrapper -->
+
+        <!-- Page Content -->
+        <div id="page-content-wrapper">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-lg-12">
+                         @yield('my_content')
+                          <a href="#menu-toggle" class="btn btn-default" id="menu-toggle">Toggle Menu</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- /#page-content-wrapper -->
+
+    </div>
     </div>
 
 <div class="navbar-fixed-bottom row-fluid" style="background-color: rgba(0, 0, 0, 0.2)">
@@ -101,7 +136,7 @@
 </div>
 </div>
 
-  <!-- Copyright -->
+  <script src="{{ asset('/js/profile.js') }}"></script>   
 
 
 
