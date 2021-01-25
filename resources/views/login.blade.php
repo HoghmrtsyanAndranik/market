@@ -12,9 +12,9 @@
 <link href="{{ asset('/css/main.css') }}" rel="stylesheet" media="all"> 
 <form action="{{url('loginuser')}}" method="post">
      {{ @csrf_field()}}
-  <div class="imgcontainer">
-    <img src="{{ asset('img/profile.png') }}" alt="Avatar" class="avatar">
-  </div>
+ <!--  <div class="imgcontainer">
+    <img src="" alt="Avatar" class="avatar">
+  </div> -->
 
   <div class="container">
 
