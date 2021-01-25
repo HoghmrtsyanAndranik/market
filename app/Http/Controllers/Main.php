@@ -9,8 +9,8 @@ use Redirect;
 use Validator;
 use Session;
 use Cookie;
-// use Mail;
-// use Artisan;
+ use Mail;
+ use Artisan;
 
 class Main extends Controller
 {
