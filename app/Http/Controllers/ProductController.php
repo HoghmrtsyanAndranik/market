@@ -67,4 +67,30 @@ class ProductController extends Controller
         
          return view('my_products')->with("products",$products);
  }
+public function myProductItem($id){
+
+        $product = Product::where('id',$id)->first();
+        return view('my_item')->with('product',$product);
+
+}
+public function addItemImages(Request $r){
+
+            if($r->hasfile('img'))
+            {
+               foreach($r->file('img') as $image)
+               {
+                   $name=time().$image->getClientOriginalName();
+                   $image->move(public_path().'/img/', $name);
+                   $photo = new ProductsPhoto;
+                   $photo->src = $name;
+                   $photo->product_id = $r->id;
+                   $photo->save();
+               }
+            }
+
+return Redirect::to("/myproduct/item/$r->id");
+
+
+}
+
 }

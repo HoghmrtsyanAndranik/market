@@ -28,3 +28,5 @@ Route::get('/profile', 'Main@profile');
 Route::get('/addproduct', 'ProductController@addProduct');
 Route::post('/savenewproduct', 'ProductController@saveNewProduct');
 Route::get('/myproducts', 'ProductController@myProducts');
+Route::get('/myproduct/item/{id}', 'ProductController@myProductItem');
+Route::post('/itemimages','ProductController@addItemImages');
