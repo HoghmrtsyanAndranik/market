@@ -30,3 +30,4 @@ Route::post('/savenewproduct', 'ProductController@saveNewProduct');
 Route::get('/myproducts', 'ProductController@myProducts');
 Route::get('/myproduct/item/{id}', 'ProductController@myProductItem');
 Route::post('/itemimages','ProductController@addItemImages');
+Route::get('/deleteitemimage','ProductController@deleteItemImage');

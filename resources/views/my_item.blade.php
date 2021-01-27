@@ -12,18 +12,47 @@
                     <div class="preview col-md-6">
                         
                         <div class="preview-pic tab-content">
-                          <div class="tab-pane active" id="pic-1"><img src="http://placekitten.com/400/252" /></div>
-                          <div class="tab-pane" id="pic-2"><img src="http://placekitten.com/400/252" /></div>
-                          <div class="tab-pane" id="pic-3"><img src="http://placekitten.com/400/252" /></div>
-                          <div class="tab-pane" id="pic-4"><img src="http://placekitten.com/400/252" /></div>
-                          <div class="tab-pane" id="pic-5"><img src="http://placekitten.com/400/252" /></div>
-                        </div>
-                        <ul class="preview-thumbnail nav nav-tabs">
+
+                          @php
+                          if(count($product->photo)>0){
+                              $src=$product->photo[0]->src;
+                              $src=asset("img/$src");
+                              $del_src=asset("img/delete-sign.png");
+                              echo "<div class='tab-pane active' id='pic-1'  style='position:relative'><img src='$src'  style='width: 100%'
+                               /><img src=$del_src class='item_image' style='position:absolute;right: 5px;top: 5px;'/></div>";
+                              echo"";
+                         
+                            }
+                            
+                          @endphp
+                           </div>
+                          <ul class="preview-thumbnail nav nav-tabs">
+                         
+
+                        @php
+                        $count=count($product->photo);
+                          if(count($product->photo)>1){  
+                       for($i=0;$i<$count;$i++){
+                                if($i==0)
+                                continue;
+                                $k=$i+1;
+                                $src=$product->photo[$i]->src;
+                                $src=asset("img/$src");
+                               
+                                echo "<li style='position:relative'><img src=$src width=150><img class='item_image' src=$del_src style='position:absolute;right: 5px;top: 5px;'/></li>";
+                                
+
+                            }
+                          }
+                       @endphp
+
+
+<!-- 
                           <li class="active"><a data-target="#pic-1" data-toggle="tab"><img src="http://placekitten.com/200/126" /></a><button class="btn btn-danger">del</button></li>
                           <li><a data-target="#pic-2" data-toggle="tab"><img src="http://placekitten.com/200/126" /></a><button class="btn btn-danger">del</button></li>
                           <li><a data-target="#pic-3" data-toggle="tab"><img src="http://placekitten.com/200/126" /></a><button class="btn btn-danger">del</button></li>
                           <li><a data-target="#pic-4" data-toggle="tab"><img src="http://placekitten.com/200/126" /></a><button>del</button></li>
-                          <li><a data-target="#pic-5" data-toggle="tab"><img src="http://placekitten.com/200/126" /></a><button>del</button></li>
+                          <li><a data-target="#pic-5" data-toggle="tab"><img src="http://placekitten.com/200/126" /></a><button>del</button></li> -->
                         </ul>
                         
                     </div>

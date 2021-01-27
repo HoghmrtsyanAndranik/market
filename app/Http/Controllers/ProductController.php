@@ -92,5 +92,12 @@ return Redirect::to("/myproduct/item/$r->id");
 
 
 }
+public function deleteItemImage(Request $r){
+//unlink($r->src);
+return asset($r->src);
+
+}
+
+
 
 }
