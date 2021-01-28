@@ -15,6 +15,7 @@ use Cookie;
 class Main extends Controller
 {
     public function home(){
+       
     	if(Cookie::has('user_id')){
             
                Session::put("user_id", Cookie::get('user_id'));
@@ -70,9 +71,10 @@ class Main extends Controller
             
                Session::put("user_id", Cookie::get('user_id'));
                Session::put("user_email",Cookie::get('user_email'));
-               return redirect('/');
+               return redirect('/'); 
         }
 
+            $error = Session::get('error', 'false');
 
             return view("login");
     }

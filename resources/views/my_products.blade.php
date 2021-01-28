@@ -32,7 +32,7 @@
 @php
 foreach($products as $p){
 
-$src=$p->photo[0]->src??'profile.png';
+$src=$p->photo[0]->src??'product.png';
 $src=asset("img/$src");
 
 $id=$p->id;

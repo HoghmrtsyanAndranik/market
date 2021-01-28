@@ -19,9 +19,15 @@ Route::get('/register', 'Main@register');
 Route::post('/adduser', 'Main@addUser');
 Route::get('/login', 'Main@login');
 Route::post('/loginuser', 'Main@loginUser');
+
+
 Route::get('admin', function () {
      return 'This is admin page';
 });
+
+
+Route::group(['middleware' => 'islogin'], function () {
+
 Route::get('/myaccount', 'Main@myAccount');
 Route::get('/logout', 'Main@logOut');
 Route::get('/profile', 'Main@profile');
@@ -30,4 +36,13 @@ Route::post('/savenewproduct', 'ProductController@saveNewProduct');
 Route::get('/myproducts', 'ProductController@myProducts');
 Route::get('/myproduct/item/{id}', 'ProductController@myProductItem');
 Route::post('/itemimages','ProductController@addItemImages');
-Route::get('/deleteitemimage','ProductController@deleteItemImage');
+Route::post('/deleteitemimage','ProductController@deleteItemImage');
+Route::get('/deleteproduct','ProductController@deleteProduct');
+
+
+  
+});
+
+
+
+

@@ -93,11 +93,19 @@ return Redirect::to("/myproduct/item/$r->id");
 
 }
 public function deleteItemImage(Request $r){
-//unlink($r->src);
-return asset($r->src);
+   $image_path = strstr($r->src, 'img');
+   $image_name=explode('/',$image_path);
+   $image_name=end($image_name);
+   ProductsPhoto::where('src',$image_name)->delete();
+   unlink($image_path);
+}
+public function deleteProduct(Request $r){
+     $product=Product::where('id',$r->id)->first();
+     foreach( $product->photo as $photo){
+        unlink('img/'.$photo->src);
+     }
+    Product::where('id',$r->id)->delete();
+
 
 }
-
-
-
 }

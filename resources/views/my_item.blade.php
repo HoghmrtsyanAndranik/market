@@ -17,12 +17,23 @@
                           if(count($product->photo)>0){
                               $src=$product->photo[0]->src;
                               $src=asset("img/$src");
+                          }
+                          else {
+                              $src=asset("img/product.png");
+                          }
+
+
+                              
                               $del_src=asset("img/delete-sign.png");
                               echo "<div class='tab-pane active' id='pic-1'  style='position:relative'><img src='$src'  style='width: 100%'
                                /><img src=$del_src class='item_image' style='position:absolute;right: 5px;top: 5px;'/></div>";
                               echo"";
                          
-                            }
+                           
+                            
+
+
+                     
                             
                           @endphp
                            </div>
