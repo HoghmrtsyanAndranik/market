@@ -8,9 +8,9 @@ class Product extends Model
 {
     public $table="products";
     public $timestamps=false;
-    // public function photo(){
-    //     return $this->hasMany('App\ProductsPhoto','product_id', 'id');
-    // }
+    public function photo(){
+        return $this->hasMany('App\ProductsPhoto');
+    }
     //Has many, erb mi hatin hamapatasxanum e shat tvyalner
 
     // public function user(){

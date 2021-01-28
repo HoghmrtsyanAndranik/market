@@ -12,9 +12,9 @@
 <link href="{{ asset('/css/main.css') }}" rel="stylesheet" media="all"> 
 <form action="{{url('loginuser')}}" method="post">
      {{ @csrf_field()}}
-  <div class="imgcontainer">
-    <img src="{{ asset('img/profile.png') }}" alt="Avatar" class="avatar">
-  </div>
+ <!--  <div class="imgcontainer">
+    <img src="" alt="Avatar" class="avatar">
+  </div> -->
 
   <div class="container">
 
@@ -35,10 +35,11 @@
   <div class="container" style="background-color:#f1f1f1">
     <button type="button" class="cancelbtn">Cancel</button>
     <span class="psw">Forgot <a href="#">password?</a></span>
-  </div>
-</form>
-<style>
 
-</style>
+  </div>
+
+</form>
+<h3 style="color:red">{{Session::get('error')}}</h3>
+
 @endsection
 

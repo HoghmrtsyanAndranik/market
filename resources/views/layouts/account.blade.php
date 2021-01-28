@@ -3,10 +3,23 @@
     <title>@yield('title')</title>
    <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
-  <link href="{{ asset('/css/profile.css') }}" rel="stylesheet" > 
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+  <meta name="csrf-token" content="{{ csrf_token() }}" />
+   <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+
+   <link href="{{asset('css/product.css')}}">
+   <link href="{{ asset('/css/profile.css') }}" rel="stylesheet" >
+
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,700" rel="stylesheet">
+
+   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    
+      <script >
+         base_url="<?=url('/')?>"; 
+     </script>
+     <script src="{{asset('js/products.js')}}"></script>
+     
   </head>
   <body>
    <nav class="navbar navbar-inverse">
@@ -64,10 +77,10 @@
                     </a>
                 </li>
                 <li>
-                    <a href="{{'myproducts'}}">My Products</a>
+                    <a href="{{'/myproducts'}}">My Products</a>
                 </li>
                 <li>
-                    <a href="{{'addproduct'}}">Add Product</a>
+                    <a href="{{'/addproduct'}}">Add Product</a>
                 </li>
                 
             </ul>
@@ -80,7 +93,7 @@
                 <div class="row">
                     <div class="col-lg-12">
                          @yield('my_content')
-                          <a href="#menu-toggle" class="btn btn-default" id="menu-toggle">Toggle Menu</a>
+                          <a href="#menu-toggle" class="btn btn-info" id="menu-toggle">Toggle Menu</a>
                     </div>
                 </div>
             </div>
@@ -90,51 +103,14 @@
     </div>
     </div>
 
-<div class="navbar-fixed-bottom row-fluid" style="background-color: rgba(0, 0, 0, 0.2)">
-      <div class="navbar-inner">
-          <div class="container">
 
+  
 
-  <!-- Grid container -->
-  <!-- <div class="container p-4 pb-0"> -->
-    <form action="">
-      <!--Grid row-->
-      <div class="row">
-        <!--Grid column-->
-        <div class="col-auto mb-4 mb-md-0">
-          <p class="pt-2"><strong>Sign up for our newsletter</strong></p>
-        </div>
-        <!--Grid column-->
-
-        <!--Grid column-->
-        <div class="col-md-5 col-12 mb-4 mb-md-0">
-          <!-- Email input -->
-          <div class="form-outline mb-4">
-            <input type="email" id="form5Example2" class="form-control" />
-            <label class="form-label" for="form5Example2">Email address</label>
-          </div>
-        </div>
-        <!--Grid column-->
-
-        <!--Grid column-->
-        <div class="col-auto mb-4 mb-md-0">
-          <!-- Submit button -->
-          <button type="submit" class="btn btn-primary mb-4">Subscribe</button>
-        </div>
-        <!--Grid column-->
-      </div>
-      <!--Grid row-->
-    </form>
-  </div>
-  <!-- Grid container -->
-
-  <!-- Copyright -->
-  <div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.2);position:relative;height:50px;text-align:center;padding:10px">
+<!--   <div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.2);position:relative;height:50px;text-align:center;padding:10px">
     © 2021 Copyright:
     <a class="text-dark" href="http://colibrilab.am//">Colibrilab</a>
-  </div>
-</div>
-</div>
+  </div> -->
+
 
   <script src="{{ asset('/js/profile.js') }}"></script>   
 

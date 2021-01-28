@@ -67,4 +67,45 @@ class ProductController extends Controller
         
          return view('my_products')->with("products",$products);
  }
+public function myProductItem($id){
+
+        $product = Product::where('id',$id)->first();
+        return view('my_item')->with('product',$product);
+
+}
+public function addItemImages(Request $r){
+
+            if($r->hasfile('img'))
+            {
+               foreach($r->file('img') as $image)
+               {
+                   $name=time().$image->getClientOriginalName();
+                   $image->move(public_path().'/img/', $name);
+                   $photo = new ProductsPhoto;
+                   $photo->src = $name;
+                   $photo->product_id = $r->id;
+                   $photo->save();
+               }
+            }
+
+return Redirect::to("/myproduct/item/$r->id");
+
+
+}
+public function deleteItemImage(Request $r){
+   $image_path = strstr($r->src, 'img');
+   $image_name=explode('/',$image_path);
+   $image_name=end($image_name);
+   ProductsPhoto::where('src',$image_name)->delete();
+   unlink($image_path);
+}
+public function deleteProduct(Request $r){
+     $product=Product::where('id',$r->id)->first();
+     foreach( $product->photo as $photo){
+        unlink('img/'.$photo->src);
+     }
+    Product::where('id',$r->id)->delete();
+
+
+}
 }

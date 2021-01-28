@@ -9,13 +9,19 @@ use Redirect;
 use Validator;
 use Session;
 use Cookie;
-// use Mail;
-// use Artisan;
+ use Mail;
+ use Artisan;
 
 class Main extends Controller
 {
     public function home(){
-    	$c=Cookie::get('user_id');
+       
+    	if(Cookie::has('user_id')){
+            
+               Session::put("user_id", Cookie::get('user_id'));
+               Session::put("user_email",Cookie::get('user_email'));
+             
+        }
 
      return view('home');
     }
@@ -65,9 +71,10 @@ class Main extends Controller
             
                Session::put("user_id", Cookie::get('user_id'));
                Session::put("user_email",Cookie::get('user_email'));
-               return redirect('/');
-            }
+               return redirect('/'); 
+        }
 
+            $error = Session::get('error', 'false');
 
             return view("login");
     }
