@@ -6,8 +6,6 @@ $(document).ready(function(){
         }
     });
 
-
-
 $('.item_image').click(function(){
 
 let src=$(this).prev().attr('src');
@@ -19,17 +17,10 @@ let src=$(this).prev().attr('src');
          location.reload();
 
       }
-
-
-
-
    })
-
-
-
-
-
 })
+
+
 $('.del_product').click(function(){
 
 let id=$(this).parents('tr').attr('id');
@@ -39,23 +30,69 @@ let id=$(this).parents('tr').attr('id');
       data:{id:id},
       success:function(d){
       	console.log(d);
-          //alert(d)
-        //location.reload();
+      }
+   })
+})
+$('.update_product').click(function(event){
+event.preventDefault();	
+let name=$('.product-title').text();
+let description=$('.product-description').text();
+let count=$('.product-count').text();
+let price=$('.product-price').text();
 
+   $.ajax({
+      url:'/updateproduct',
+      type:'post',
+      data:{name:name,description:description,count:count,price:price},
+      success:function(d){
+      	 $('#price_error').html('');
+      	 $('#name_error').html('');
+      	 $('#description_error').html('');
+      	 $('#count_error').html('');
+
+      	if(d.success==false){
+
+      	    if(d[0].price!=undefined)
+      		    $('#price_error').html(d[0].price[0])
+       		if(d[0].name!=undefined)
+      	        $('#name_error').html(d[0].name[0])
+      	    if(d[0].description!=undefined)
+      	        $('#description_error').html(d[0].description[0])
+      	    if(d[0].count!=undefined)
+      	        $('#count_error').html(d[0].count[0])
       }
 
 
-
-
+      }
    })
-
-
-
-
-
 })
 
+$('.add_to_cart').click(function(){
 
+    let id=$(this).parents('tr').attr('id');
+    $.ajax({
+        url:'/addtocart',
+        type:'post',
+        data:{product_id:id},
+        success:function(d){
+      	   //alert(d)
+      	   console.log(d);
+        }
+   })
+})
 
+$('.add_wish').click(function(){
+
+   let id=$(this).parents('tr').attr('id');
+      $.ajax({
+         url:'/addtowishlist',
+         type:'post',
+         data:{product_id:id},
+         success:function(d){
+      	    //alert(d)
+      	   console.log(d);
+        }
+    })
+})
 
 })

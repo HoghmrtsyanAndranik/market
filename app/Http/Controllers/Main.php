@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\User;
+use App\Product;
+use App\Cart;
 use Hash;
 use Redirect;
 use Validator;
@@ -15,7 +17,8 @@ use Cookie;
 class Main extends Controller
 {
     public function home(){
-       
+
+      
     	if(Cookie::has('user_id')){
             
                Session::put("user_id", Cookie::get('user_id'));
@@ -23,7 +26,10 @@ class Main extends Controller
              
         }
 
-     return view('home');
+     $user_id=Session::get("user_id")??0;
+     $products = Product::where("user_id","!=",$user_id)->get();
+     
+     return view('home',['products'=>$products]);
     }
     public function register(){
      return view('register');

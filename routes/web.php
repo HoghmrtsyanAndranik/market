@@ -19,7 +19,7 @@ Route::get('/register', 'Main@register');
 Route::post('/adduser', 'Main@addUser');
 Route::get('/login', 'Main@login');
 Route::post('/loginuser', 'Main@loginUser');
-
+Route::get('/product/item/{id}', 'ProductController@ProductItem');
 
 Route::get('admin', function () {
      return 'This is admin page';
@@ -38,9 +38,11 @@ Route::get('/myproduct/item/{id}', 'ProductController@myProductItem');
 Route::post('/itemimages','ProductController@addItemImages');
 Route::post('/deleteitemimage','ProductController@deleteItemImage');
 Route::get('/deleteproduct','ProductController@deleteProduct');
-
-
-  
+Route::post('/updateproduct','ProductController@updateProduct');
+Route::post('/addtocart','CartController@addToCart');
+Route::post('/addtowishlist','WishlistController@addToWishList');
+Route::get('/showcart','CartController@showToCart'); 
+ 
 });
 
 

@@ -1,11 +1,23 @@
 <html>
   <head>
     <title>@yield('title')</title>
-   <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+ 
+    <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,700" rel="stylesheet">
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    
+    <meta name="csrf-token" content="{{ csrf_token() }}" />
+    <link href="{{asset('css/product.css')}}"  rel="stylesheet">
+    <link href="{{ asset('/css/profile.css') }}" rel="stylesheet" >
+
+ 
+
   </head>
   <body>
    <nav class="navbar navbar-inverse">
@@ -63,7 +75,17 @@
   </div> -->
 
 
+    <script > base_url="<?=url('/')?>";</script> 
+    <script src="{{asset('js/products.js')}}"></script>
+    <script src="{{asset('js/profile.js')}}"></script>
 
+    
+
+   
+   
+    
+     
+     
 
 
 
