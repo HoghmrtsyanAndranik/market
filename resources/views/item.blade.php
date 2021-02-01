@@ -1,9 +1,9 @@
-@extends('layouts.account')
+@extends('layouts.app')
 
-    @section('title','My Products')
+    @section('title','Product')
 
 
-    @section('my_content')
+    @section('content')
  
     <div class="container">
         <div class="card">
@@ -26,7 +26,7 @@
                               
                               $del_src=asset("img/delete-sign.png");
                               echo "<div class='tab-pane active' id='pic-1'  style='position:relative'><img src='$src'  style='width: 100%'
-                               /><img src=$del_src class='item_image' style='position:absolute;right: 5px;top: 5px;'/></div>";
+                               /></div>";
                               echo"";
                          
                            
@@ -50,7 +50,7 @@
                                 $src=$product->photo[$i]->src;
                                 $src=asset("img/$src");
                                
-                                echo "<li style='position:relative'><img src=$src width=150><img class='item_image' src=$del_src style='position:absolute;right: 5px;top: 5px;'/></li>";
+                                echo "<li style='position:relative'><img src=$src width=150></li>";
                                 
 
                             }
@@ -68,8 +68,8 @@
                         
                     </div>
                     <div class="details col-md-6">
-                       <p style="color:red" id="name_error"></p>
-                        <h3 class="product-title" contenteditable>{{$product->name}}</h3>
+                      
+                        <h3 class="product-title" >{{$product->name}}</h3>
                         <div class="rating">
                             <div class="stars">
                                 <span class="fa fa-star checked"></span>
@@ -80,31 +80,24 @@
                             </div>
                             
                         </div>
-                         <p style="color:red" id="description_error"></p>
-                        <p class="product-description" contenteditable>{{$product->description}}</p>
-                        <p style="color:red" id="price_error"></p>
-                        <h4 >current price: <span class="product-price" contenteditable>{{$product->price}}</span></h4>
+                        
+                        <p class="product-description" >{{$product->description}}</p>
+                       
+                        <h4 >current price: <span class="product-price" >{{$product->price}}</span></h4>
                         <!-- <p class="vote"><strong>91%</strong> of buyers enjoyed this product! <strong>(87 votes)</strong></p> -->
                         <h5 class="sizes">quantity:
-                           <p style="color:red" id="count_error"></p>
-                            <span class="product-count" data-toggle="tooltip" title="small" contenteditable>{{$product->count}}</span>
+                        
+                            <span class="product-count" data-toggle="tooltip" title="small" >{{$product->count}}</span>
                            
                         </h5>
                         
                         <div class="action">
-                            <button class="btn btn-primary update_product" type="button">Update</button>
-                            <!-- <button class="like btn btn-default" type="button"><span class="fa fa-heart"></span></button> -->
+                            <button class="btn btn-primary ad_to_cart" type="button">Add To Cart</button>
+                            <button class="like btn btn-default" type="button"><span class="fa fa-heart add_wish"></span></button> 
                         </div>
 
                       </br></br>
-                        <div >
-                            <form enctype="multipart/form-data" method="post" action="{{'/itemimages'}}">
-                               @csrf
-                                <input type="file" name="img[]" multiple>
-                                <input type="hidden" name="id" value="{{$product->id}}">
-                                   <button>send</button>
-                            </form>
-                        </div>
+                        
                     </div>
                 </div>
             </div>

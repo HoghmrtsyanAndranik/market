@@ -1,8 +1,9 @@
 @extends('layouts.app')
 
-@section('title', 'Home')
+@section('title', 'Cart')
 
 @section('content')
+
     <div class="container">
   <table class="table table-bordered">
     <thead>
@@ -18,8 +19,9 @@
     </thead>
     <tbody>
 @php
-foreach($products as $p){
 
+foreach($products as $pr){
+$p=$pr->product;
 $src=$p->photo[0]->src??'product.png';
 $src=asset("img/$src");
 

@@ -68,7 +68,7 @@ class ProductController extends Controller
          return view('my_products')->with("products",$products);
  }
 public function myProductItem($id){
-
+        Session::put("product_id", $id);
         $product = Product::where('id',$id)->first();
         return view('my_item')->with('product',$product);
 
@@ -108,4 +108,37 @@ public function deleteProduct(Request $r){
 
 
 }
+public function updateProduct(Request $r){
+
+   $product_id=Session::get("product_id");
+   $validator = Validator::make($r->all(), [
+            'name' => 'required',
+            'price' => 'required|integer',
+            'count' => 'required|integer',
+            'description' => 'required'
+            
+        ]);
+  if($validator->fails())
+  {
+      return ['success'=>false,$validator->getMessageBag()->toArray()];
+  }
+  $product_id=Session::get("product_id");
+  $product=Product::find($product_id);
+  $product->name = $r->name;
+  $product->price = $r->price;
+  $product->count = $r->count;
+  $product->description = $r->description;
+  $product->save();
+  
+
+}
+public function ProductItem($id){
+        Session::put("product_id", $id);
+        $product = Product::where('id',$id)->first();
+        return view('item')->with('product',$product);
+
+}
+
+
+
 }
