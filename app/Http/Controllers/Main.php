@@ -27,7 +27,8 @@ class Main extends Controller
         }
 
      $user_id=Session::get("user_id")??0;
-     $products = Product::where("user_id","!=",$user_id)->get();
+
+     $products = Product::where("user_id","!=",$user_id)->Paginate(1);
      
      return view('home',['products'=>$products]);
     }

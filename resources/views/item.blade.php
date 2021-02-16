@@ -46,7 +46,6 @@
                        for($i=0;$i<$count;$i++){
                                 if($i==0)
                                 continue;
-                                $k=$i+1;
                                 $src=$product->photo[$i]->src;
                                 $src=asset("img/$src");
                                
@@ -92,7 +91,7 @@
                         </h5>
                         
                         <div class="action">
-                            <button class="btn btn-primary ad_to_cart" type="button">Add To Cart</button>
+                            <button class="btn btn-primary ad_to_cart" type="button"><span class="fa fa-shopping-cart add_to_cart"></span></button>
                             <button class="like btn btn-default" type="button"><span class="fa fa-heart add_wish"></span></button> 
                         </div>
 

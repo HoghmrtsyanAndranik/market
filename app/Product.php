@@ -8,6 +8,7 @@ class Product extends Model
 {
     public $table="products";
     public $timestamps=false;
+    
     public function photo(){
         return $this->hasMany('App\ProductsPhoto');
     }

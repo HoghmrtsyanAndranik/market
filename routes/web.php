@@ -42,7 +42,11 @@ Route::post('/updateproduct','ProductController@updateProduct');
 Route::post('/addtocart','CartController@addToCart');
 Route::post('/addtowishlist','WishlistController@addToWishList');
 Route::get('/showcart','CartController@showToCart'); 
- 
+Route::post('/deletefromcart','CartController@deleteFromCart'); 
+Route::post('/updatecart','CartController@updateCart'); 
+Route::get('/showwish','WishlistController@showWish');
+Route::post('/delwishlist','WishlistController@deleteFromWish'); 
+Route::get('/order','OrderController@order'); 
 });
 
 

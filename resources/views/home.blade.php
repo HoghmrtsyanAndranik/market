@@ -13,7 +13,8 @@
         <th>Count</th>
         <th>Description</th>
         <th>Open</th>
-        <th>Delete</th>
+        <th>Cart</th>
+        <th>Wish</th>
       </tr>
     </thead>
     <tbody>
@@ -37,8 +38,8 @@ $description=$p->description;
          <td><?=$count?></td>
         <td><?=$description?></td>
         <td><a href="<?=url("product/item/$id")?>"><button class="btn btn-primary">Open</button></a></td>
-        <td><button class="btn btn-primary add_to_cart">Add To Cart</button></td>
-        <td><button class="like btn btn-default" type="button"><span class="fa fa-heart add_wish"></span></button> </td>
+        <td><button class="btn btn-primary add_to_cart"><span class="fa fa-shopping-cart add_to_cart" id=<?=$id?>></span></button></td>
+        <td><button class="like btn btn-default" type="button"><span class="fa fa-heart add_wish" id=<?=$id?>></span></button> </td>
 </tr>
 
 
@@ -48,4 +49,5 @@ $description=$p->description;
   </tbody>   
 </table>
 </div>
+{{ $products->links() }}
 @endsection

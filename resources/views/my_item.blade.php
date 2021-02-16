@@ -46,7 +46,6 @@
                        for($i=0;$i<$count;$i++){
                                 if($i==0)
                                 continue;
-                                $k=$i+1;
                                 $src=$product->photo[$i]->src;
                                 $src=asset("img/$src");
                                

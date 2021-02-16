@@ -3,8 +3,8 @@
     <title>@yield('title')</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
- 
-    <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <!-- <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css"> -->
     <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,700" rel="stylesheet">
 
@@ -15,7 +15,6 @@
     <link href="{{asset('css/product.css')}}"  rel="stylesheet">
     <link href="{{ asset('/css/profile.css') }}" rel="stylesheet" >
 
-     
   </head>
   <body>
    <nav class="navbar navbar-inverse">
@@ -80,6 +79,9 @@
                 </li>
                  <li>
                     <a href="{{'/showcart'}}">Cart</a>
+                </li>
+                 <li>
+                    <a href="{{'/showwish'}}">Wish List</a>
                 </li>
             </ul>
         </div>
