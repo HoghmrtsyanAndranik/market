@@ -3,12 +3,12 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Session;
-use App\Wishlist;
+use App\Wish;
 use Redirect;
 class WishlistController extends Controller
 {
     public function addToWishList(Request $r){
-    	$wishlist=new Wishlist;
+    	$wishlist=new Wish;
     	
         $wishlist->user_id = Session::get("user_id");
         
@@ -16,17 +16,18 @@ class WishlistController extends Controller
        
         $wishlist->save();
     }
-//     public function  showWishlist(){
-//         $list = Wishlist::where('user_id',Session::get('user_id'))->get();
-//         // echo '<pre>';
-//         // foreach($list as $c){
-           
-//         //     print_r($c->product);
-//         //    // echo $c->count;
-//         // }
-//         // die;
-//       return view('wishList')->with('wishlist',$list);
-//     }
+
+
+    public function  showWish(){
+       $list = Wish::where('user_id',Session::get('user_id'))->get();
+       return view('wishList')->with('list',$list);
+    }
+    public function  deleteFromWish(Request $r){
+       Wish::destroy($r->id);
+
+    }
+
+
 // public function  deleteWishListProduct($id){
 //        Wishlist::where('id',$id)->delete();
 //        return Redirect::to('/showWishlist');

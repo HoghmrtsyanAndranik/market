@@ -13,40 +13,53 @@
         <th>Price</th>
         <th>Count</th>
         <th>Description</th>
-        <th>Open</th>
-        <th>Delete</th>
+        <th>Sum</th>
+        <th>Remove</th>
+        <th>Wish</th>
       </tr>
     </thead>
     <tbody>
 @php
 
-foreach($products as $pr){
-$p=$pr->product;
+
+$total=0;
+foreach($rows as $row){
+$id=$row->id;
+$count=$row->count;
+$p=$row->product;
+
 $src=$p->photo[0]->src??'product.png';
 $src=asset("img/$src");
-
-$id=$p->id;
 $name=$p->name;
 $price=$p->price;
-$count=$p->count;
 $description=$p->description;
-
+$product_id=$p->id;
+$product_count=$p->count;
+$sum=$price*$count;
+$total+=$sum;
 @endphp
 <tr id=<?=$id?>>
         <td><img src=<?=$src?> width=150></td>
         <td><?=$name?></td>
         <td><?=$price?></td>
-         <td><?=$count?></td>
+         <td><input type="number" value="<?=$count?>" class="update_cart" min=1 max=<?=$product_count?>></td>
         <td><?=$description?></td>
-        <td><a href="<?=url("product/item/$id")?>"><button class="btn btn-primary">Open</button></a></td>
-        <td><button class="btn btn-primary add_to_cart">Add To Cart</button></td>
-        <td><button class="like btn btn-default" type="button"><span class="fa fa-heart add_wish"></span></button> </td>
+        <td><?=$sum?></td>
+        <td><button class="btn btn-primary"><span class="fa fa-trash   del_cart" ></span></button></td>
+        <td><button class="like btn btn-default" type="button"><span class="fa fa-heart add_wish" id=<?=$product_id?>></span></button> </td>
 </tr>
 
 
 @php
+
 }
+Session::put('total',$total);
 @endphp
+<tr><td colspan=5>total</td><td>{{$total}}</td>
+</tr> 
+<tr><td colspan=7
+  style="border:none"></td><td style="border:none"><a href="{{url('order')}}"><button class="like btn btn-info">BUY</button></a></td>
+</tr>
   </tbody>   
 </table>
 </div>

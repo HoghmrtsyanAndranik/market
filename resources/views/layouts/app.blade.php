@@ -75,7 +75,7 @@
   </div> -->
 
 
-    <script > base_url="<?=url('/')?>";</script> 
+    <script > base_url="<?=url('/')?>"</script> 
     <script src="{{asset('js/products.js')}}"></script>
     <script src="{{asset('js/profile.js')}}"></script>
 

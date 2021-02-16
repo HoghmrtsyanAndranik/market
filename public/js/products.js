@@ -7,7 +7,7 @@ $(document).ready(function(){
     });
 
 $('.item_image').click(function(){
-
+alert(base_url)
 let src=$(this).prev().attr('src');
    $.ajax({
       url:'/deleteitemimage',
@@ -30,6 +30,7 @@ let id=$(this).parents('tr').attr('id');
       data:{id:id},
       success:function(d){
       	console.log(d);
+      	location.reload();
       }
    })
 })
@@ -69,7 +70,7 @@ let price=$('.product-price').text();
 
 $('.add_to_cart').click(function(){
 
-    let id=$(this).parents('tr').attr('id');
+    let id=$(this).attr('id');
     $.ajax({
         url:'/addtocart',
         type:'post',
@@ -80,16 +81,56 @@ $('.add_to_cart').click(function(){
         }
    })
 })
+$('.del_cart').click(function(){
+    let id=$(this).parents('tr').attr('id');
+     $.ajax({
+        url:base_url+'/deletefromcart',
+        type:'post',
+        data:{id:id},
+        success:function(d){
+      	  location.reload();
+        }
+   })
+
+})
+$('.update_cart').change(function(){
+	 let id=$(this).parents('tr').attr('id');
+     let count=$(this).val();
+     $.ajax({
+        url:base_url+'/updatecart',
+        type:'post',
+        data:{id:id,count:count},
+        success:function(d){
+          location.reload();
+        }
+   })
+
+})
+
+
 
 $('.add_wish').click(function(){
 
-   let id=$(this).parents('tr').attr('id');
+   let id=$(this).attr('id');
       $.ajax({
          url:'/addtowishlist',
          type:'post',
          data:{product_id:id},
          success:function(d){
       	    //alert(d)
+      	   console.log(d);
+        }
+    })
+})
+$('.del_wish').click(function(){
+
+   let id=$(this).parents('tr').attr('id');
+      $.ajax({
+         url:'/delwishlist',
+         type:'post',
+         data:{id:id},
+         success:function(d){
+      	   location.reload();
       	   console.log(d);
         }
     })
